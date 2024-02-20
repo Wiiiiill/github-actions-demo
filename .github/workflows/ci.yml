@@ -9,24 +9,13 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      # - name: Checkout
-      #   uses: actions/checkout@master
+      - name: Checkout
+        uses: actions/checkout@master
 
-      - name: test Val
-        env:
-          HELLO: ${{vars.STR}}
-        run: echo $HELLO && echo $CI
+      - name: Install And Build
+        run: npm install && npm run build
 
-      - name: test Sec
-        run: echo ${{ secrets.HELLO }}
-
-      - name: test HEllo
-        if: ${{vars.STR == 'HELLO WORLD'}}
-        run: echo HEllo world 
-      # - name: Install And Build
-      #   run: npm install && npm run build
-
-      # - name: Deploy
-      #   uses: JamesIves/github-pages-deploy-action@v4
-      #   with:
-      #     folder: build
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: build
