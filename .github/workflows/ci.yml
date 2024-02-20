@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@master
 
       - name: test Val
-        run: echo $V1
+        run: echo $V1 && echo $CI
 
       - name: test Sec
         run: echo ${{ secrets.HELLO }}
