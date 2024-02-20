@@ -19,17 +19,10 @@ jobs:
 
       - name: test Sec
         run: echo ${{ secrets.HELLO }}
-        
-      - name: Use variables
-        run: |
-          echo "repository variable : $REPOSITORY_VAR"
-          echo "organization variable : $ORGANIZATION_VAR"
-          echo "overridden variable : $OVERRIDE_VAR"
-          echo "variable from shell environment : $env_var"
-        env:
-          REPOSITORY_VAR: ${{ vars.REPOSITORY_VAR }}
-          ORGANIZATION_VAR: ${{ vars.ORGANIZATION_VAR }}
-          OVERRIDE_VAR: ${{ vars.OVERRIDE_VAR }}
+
+      - name: test HEllo
+        if: ${{vars.STR == 'HELLO WORLD'}}
+        run: echo HEllo world 
       # - name: Install And Build
       #   run: npm install && npm run build
 
