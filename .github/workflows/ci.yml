@@ -9,8 +9,8 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@master
+      # - name: Checkout
+      #   uses: actions/checkout@master
 
       - name: test Val
         env:
@@ -19,7 +19,17 @@ jobs:
 
       - name: test Sec
         run: echo ${{ secrets.HELLO }}
-
+        
+      - name: Use variables
+        run: |
+          echo "repository variable : $REPOSITORY_VAR"
+          echo "organization variable : $ORGANIZATION_VAR"
+          echo "overridden variable : $OVERRIDE_VAR"
+          echo "variable from shell environment : $env_var"
+        env:
+          REPOSITORY_VAR: ${{ vars.REPOSITORY_VAR }}
+          ORGANIZATION_VAR: ${{ vars.ORGANIZATION_VAR }}
+          OVERRIDE_VAR: ${{ vars.OVERRIDE_VAR }}
       # - name: Install And Build
       #   run: npm install && npm run build
 
