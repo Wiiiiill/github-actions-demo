@@ -20,10 +20,10 @@ jobs:
       - name: test Sec
         run: echo ${{ secrets.HELLO }}
 
-      - name: Install And Build
-        run: npm install && npm run build
+      # - name: Install And Build
+      #   run: npm install && npm run build
 
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: build
+      # - name: Deploy
+      #   uses: JamesIves/github-pages-deploy-action@v4
+      #   with:
+      #     folder: build
